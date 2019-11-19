@@ -1,0 +1,13 @@
+data
+*.csv
+*.xlsx
+*.xls
+*.pkl
+
+# Other
+venv
+*.idea
+.ipynb_checkpoints/
+__pycache__
+*.Rproj.user
+.Rproj.user
