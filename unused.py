@@ -22,3 +22,20 @@ for s in ['name', 'summary', 'space',
 
 arr = "diff" in np.where(df['runs1']==df['runs2'], 'same', 'diff')
 np.unique(arr, return_counts=True)
+
+# Feature Elimination
+
+%% q
+
+estimator = SVR(kernel="linear")
+selector = RFE(estimator, 5, step=1)
+selector = selector.fit(X, y)
+selector.support_
+
+
+%%
+
+selector.ranking_
+for i in range(len(list(X))):
+    if selector.ranking_[i] == 1:
+        print(list(X)[i])

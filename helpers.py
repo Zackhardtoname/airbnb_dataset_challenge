@@ -25,3 +25,15 @@ def corr_heatmap (corr):
     )
 
     return ax
+
+def draw(y):
+    import matplotlib.pyplot as plt
+    plt.rcParams["figure.figsize"] = (20, 3)
+    x = list(range(len(y)))
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    ax.plot(x, y, color='lightblue', linewidth=3)
+    plt.xticks(x)
+    plt.grid(True)
+    plt.savefig('./imgs/mean_squared_error_figure.png')
+    plt.show()
