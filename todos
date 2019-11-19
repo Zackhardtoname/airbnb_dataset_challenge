@@ -1,1 +1,4 @@
-1.
+1. Encode binary variables
+2. Encode categorical variables
+    * race/gender from the name variable
+3. Write more explanations in the report
