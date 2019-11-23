@@ -1,10 +1,4 @@
-data
-*.csv
-*.xlsx
-*.xls
-*.pkl
-
-# Other
+# miscellaneous
 venv
 *.idea
 .ipynb_checkpoints/

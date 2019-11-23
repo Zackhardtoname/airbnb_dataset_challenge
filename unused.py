@@ -20,6 +20,7 @@ for s in ['name', 'summary', 'space',
     print(df[s].describe())
     print("-------------------------")
 
+# check if two cols are the same
 arr = "diff" in np.where(df['runs1']==df['runs2'], 'same', 'diff')
 np.unique(arr, return_counts=True)
 
