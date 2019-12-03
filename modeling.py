@@ -1,14 +1,16 @@
 import numpy as np
-import pandas as pd
 from sklearn.tree import DecisionTreeRegressor
 from sklearn.model_selection import train_test_split
-import logging
 import pandas as pd
 from sklearn.metrics import mean_squared_error
-from sklearn.metrics import accuracy_score, f1_score
 from sklearn.ensemble import GradientBoostingRegressor
 from scipy import sparse
-from sklearn.metrics import r2_score
+
+import seaborn as sns
+sns.set(color_codes=True)
+
+import matplotlib.pyplot as plt
+import statsmodels.api as sm
 import helpers
 
 X = pd.DataFrame(sparse.load_npz("./data/X.npz").toarray())
@@ -42,7 +44,15 @@ for n_estimators in range(1, 1200):
     if error_going_up == 5:
         break # early stopping
 
-helpers.draw(val_errors, './imgs/mean_squared_error_figure.png')
+helpers.draw(y=val_errors, xlabel="iteration", ylabel="MSE",
+             filename='./imgs/mean_squared_error.png', title="Mean Squared Error")
 
-diff = y_pred - y_test
-helpers.draw(diff[:20], "errors")
+results = sm.OLS(y_pred,sm.add_constant(y_test)).fit()
+print(results.summary())
+
+sns_plot = sns.lmplot(x="True Data", y='Predicted Data', data=pd.DataFrame(list(zip(y_test, y_pred)), columns =['True Data', 'Predicted Data']), fit_reg=True)
+fig = sns_plot.fig
+fig.suptitle('True VS Predicted log_prices', fontsize=8)
+fig.savefig('./imgs/true_vs_predicted_log_prices.png')
+plt.show()
+# notice the confidence interval is very small; we almost can't see it

@@ -1,5 +1,6 @@
 import seaborn as sns
 import numpy as np
+import matplotlib.pyplot as plt
 
 def convert_string_to_dollar (str):
     return float(str.replace('$', '').replace(',', ''))
@@ -26,14 +27,21 @@ def corr_heatmap (corr):
 
     return ax
 
-def draw(y, filename):
-    import matplotlib.pyplot as plt
+def draw(y, x=None, filename=None, title=None, xlabel=None, ylabel=None):
+    if not title:
+        title = filename
+
+    if not x:
+        x = list(range(len(y)))
+
     plt.rcParams["figure.figsize"] = (20, 3)
-    x = list(range(len(y)))
     fig = plt.figure()
     ax = fig.add_subplot(111)
     ax.plot(x, y, color='lightblue', linewidth=3)
     plt.xticks(x)
+    plt.title(title, fontsize=24)
+    plt.xlabel(xlabel, fontsize=14)
+    plt.ylabel(ylabel, fontsize=14)
     plt.grid(True)
     plt.savefig(filename)
     plt.show()
