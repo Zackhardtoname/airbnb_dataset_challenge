@@ -7,9 +7,12 @@ import pandas as pd
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import accuracy_score, f1_score
 from sklearn.ensemble import GradientBoostingRegressor
+from scipy import sparse
+from sklearn.metrics import r2_score
 import helpers
 
-X, y = pd.read_csv("./data/X.csv", index_col=0), pd.read_csv("./data/y.csv", index_col=0)
+X = pd.DataFrame(sparse.load_npz("./data/X.npz").toarray())
+y = pd.read_csv("./data/y.csv", index_col=0, header=None)
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
@@ -39,7 +42,7 @@ for n_estimators in range(1, 1200):
     if error_going_up == 5:
         break # early stopping
 
-helpers.draw(val_errors)
+helpers.draw(val_errors, './imgs/mean_squared_error_figure.png')
 
-diff = np.exp(y_pred) - np.exp(y_test)
-helpers.draw(diff[:20])
+diff = y_pred - y_test
+helpers.draw(diff[:20], "errors")

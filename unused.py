@@ -40,3 +40,6 @@ selector.ranking_
 for i in range(len(list(X))):
     if selector.ranking_[i] == 1:
         print(list(X)[i])
+
+# for col in cat_attribs:
+#     print(df[col].value_counts())

@@ -75,11 +75,14 @@ cat_cols = [
     "host_neighbourhood", "neighbourhood_cleansed",
         "street", "city", "state",
         "zipcode", "market", "smart_location",
-    "host_response_time", "host_name", "host_verifications", "cancellation_policy"
+    "host_response_time", "host_verifications", "cancellation_policy",
     "property_type", "room_type", "bed_type"
 ]
+
+# get race from  "host_name",
 # tricky: handle later
 # "latitude", "longitude",
+# useless: "host_name", (only first name is included)
 
 text_cols = [
     "name", "summary", "space", "description", "neighborhood_overview", "notes", "transit", "access",

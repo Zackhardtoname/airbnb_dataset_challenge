@@ -1,7 +1,13 @@
 # miscellaneous
-venv
 *.idea
+
+# Python
+venv
 .ipynb_checkpoints/
 __pycache__
-*.Rproj.user
+
+# R
 .Rproj.user
+.Rhistory
+.RData
+.Ruserdata

@@ -26,7 +26,7 @@ def corr_heatmap (corr):
 
     return ax
 
-def draw(y):
+def draw(y, filename):
     import matplotlib.pyplot as plt
     plt.rcParams["figure.figsize"] = (20, 3)
     x = list(range(len(y)))
@@ -35,5 +35,11 @@ def draw(y):
     ax.plot(x, y, color='lightblue', linewidth=3)
     plt.xticks(x)
     plt.grid(True)
-    plt.savefig('./imgs/mean_squared_error_figure.png')
+    plt.savefig(filename)
     plt.show()
+
+def drop_attribs(df, attribs, list_to_drop):
+    df.drop(list_to_drop, axis=1, inplace=True)
+    attribs = [col_name for col_name in attribs if col_name not in list_to_drop]
+
+    return df, attribs
