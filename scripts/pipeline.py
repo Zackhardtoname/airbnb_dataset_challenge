@@ -2,6 +2,7 @@
 
 import pickle
 from data import data_keys
+import helpers
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import Imputer as SimpleImputer
 from sklearn.preprocessing import StandardScaler
@@ -20,7 +21,6 @@ num_pipeline = Pipeline([
         ('std_scaler', StandardScaler()),
     ])
 
-
 cat_pipeline = Pipeline([
         ('imputer', CategoricalImputer(strategy='constant', fill_value='nan')), # mode by default; only works with string values
         ('encoder', OneHotEncoder(handle_unknown='ignore')),
@@ -29,10 +29,9 @@ cat_pipeline = Pipeline([
 df = df[num_attribs + cat_attribs]
 cols_contain_nans = df.columns[df.isna().any()].tolist()
 cat_cols_contain_nans = [col for col in cols_contain_nans if col in cat_attribs]
-cat_cols_contain_nans
+print("cat_cols_contain_nans: \n", cat_cols_contain_nans)
 
-#%%
-
+# to make sure the dependent variable is not in the training data
 try:
     num_attribs.remove("log_price")
 except:
@@ -47,6 +46,7 @@ X = full_pipeline.fit_transform(df[num_attribs + cat_attribs])
 y = df["log_price"]
 
 ## Save the Data
-
 sparse.save_npz("../data/X.npz", X)
+var_names = helpers.get_transformer_feature_names(full_pipeline)
+pickle.dump(var_names, open('../data/var_names.pkl', 'wb'))
 y.to_csv("../data/y.csv")
