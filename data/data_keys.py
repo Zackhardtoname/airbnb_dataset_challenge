@@ -1,3 +1,5 @@
+# Pandas' own variable classification
+
 # complete_cols = {dtype('int64'): Index(['id', 'scrape_id', 'host_id', 'accommodates', 'guests_included',
 #         'minimum_nights', 'maximum_nights', 'minimum_minimum_nights',
 #         'maximum_minimum_nights', 'minimum_maximum_nights',
@@ -34,6 +36,8 @@
 #         'is_business_travel_ready', 'cancellation_policy',
 #         'require_guest_profile_picture', 'require_guest_phone_verification'],
 #        dtype='object')}
+
+# manual classification
 
 primary_num_cols = [
     "accommodates", "guests_included", "number_of_reviews", "minimum_nights", "maximum_nights",
