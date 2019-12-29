@@ -183,4 +183,4 @@ def plot_learning_curve(estimator, title, X, y, axes=None, ylim=None, cv=None,
     axes[2].set_ylabel("Score")
     axes[2].set_title("Performance of the model")
 
-    return plt
+    return train_scores_mean
