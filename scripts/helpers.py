@@ -13,12 +13,16 @@ def percent_to_float(x):
     except:
         return np.nan
 
-def corr_heatmap (corr):
+def corr_heatmap (corr, figsize=None):
+    fig, ax = plt.subplots(figsize=figsize)
+
     ax = sns.heatmap(
         corr,
         vmin=-1, vmax=1, center=0,
         cmap=sns.diverging_palette(20, 220, n=200),
-        square=True
+        square=True,
+        xticklabels = True,
+        yticklabels = True
     )
 
     ax.set_xticklabels(

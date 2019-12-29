@@ -48,3 +48,23 @@
 # # for col in cat_attribs:
 # #     print(df[col].value_counts())
 # sparse.save_npz("../data/X.npz", X)
+#
+# primary_num_cols = [
+#       "minimum_nights", "maximum_nights",
+#      "square_feet",
+#      #"calendar_updated" is a bit tricky; handle it later
+# ]
+#
+# are all of the "primary_num_cols" in data keys, "instant_bookable", "host_has_profile_pic", "host_identity_verified",
+# "description", "neighborhood_overview", "transit", "house_rules",
+# pictures of the listings as well as host profile pictures, and in fact, the past availability (although we could not use this one since we mostly only have aggregated availability statistics).
+#
+# dark horses:
+# room_type
+#
+# transformed:
+# log_bedrooms_per_accommodates
+#
+# less:
+# response_time
+# property_type
