@@ -1,7 +1,8 @@
-import seaborn as sns
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
+import seaborn as sns
 from sklearn.model_selection import learning_curve
+
 
 def convert_string_to_dollar (str):
     return float(str.replace('$', '').replace(',', ''))

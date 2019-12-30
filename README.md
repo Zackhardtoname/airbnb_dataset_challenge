@@ -1,12 +1,16 @@
 # Quick Start
 
-Visit (and run) the following files in the script folder in sequence
+Visit the following files in the script folder in sequence
 
 * EDA.ipynb
 * pipeline.ipynb
 * modeling_evaluation.ipynb
 
+# Run
 
+Use a Python virtual environment run the following command before the scripts above
+
+pip3 install -r requirements.txt
 
 # Important Files
 
