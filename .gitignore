@@ -5,6 +5,7 @@
 venv
 .ipynb_checkpoints/
 __pycache__
+env/
 
 # R
 .Rproj.user
